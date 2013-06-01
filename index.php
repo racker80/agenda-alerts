@@ -1,11 +1,19 @@
 <?php
-	require 'libs/Twilio.php';
+	require_once 'libs/Mongo_db.php';
+	require_once 'libs/Twilio.php';
 	
 	$sid = "AC5a93d04a51ef297e78f2518892f1a939"; // Your Account SID from www.twilio.com/user/account
 	$token = "6802051d3cb9f0ffdbba46c138087c8f"; // Your Auth Token from www.twilio.com/user/account
 
 	$client = new Services_Twilio($sid, $token);
+$m = new Mongo('166.78.181.194');
+$db = $m->test;
+$collection = $db->test;
 
+print_r($collection);
+
+//$connection = new MongoClient();
+//	phpinfo();
 /*
 	$message = $client->account->sms_messages->create(
 		'9172439244', // From a valid Twilio number
@@ -13,6 +21,18 @@
 		"Hello monkey!"
 	);
 */
+
+
+$item = array(
+	'agenda_id'=>'07161980',
+	'item_id'=>'1111',
+	'type'=>'Austin Energy',
+	'content'=>'testtestest'
+	);
+$item = json_encode($item);
+
+echo $item;
+
 ?>
 <!DOCTYPE html>
     <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
