@@ -1,11 +1,11 @@
 <?php
 	require_once 'libs/Mongo_db.php';
-	require_once 'libs/Twilio.php';
+	//require_once 'libs/Twilio.php';
 	
 	$sid = "AC5a93d04a51ef297e78f2518892f1a939"; // Your Account SID from www.twilio.com/user/account
 	$token = "6802051d3cb9f0ffdbba46c138087c8f"; // Your Auth Token from www.twilio.com/user/account
 
-	$client = new Services_Twilio($sid, $token);
+	//$client = new Services_Twilio($sid, $token);
 $m = new Mongo('166.78.181.194');
 $db = $m->test;
 $collection = $db->test;
