@@ -5,7 +5,7 @@
 	$sid = "AC5a93d04a51ef297e78f2518892f1a939"; // Your Account SID from www.twilio.com/user/account
 	$token = "6802051d3cb9f0ffdbba46c138087c8f"; // Your Auth Token from www.twilio.com/user/account
 
-	$client = new Services_Twilio($sid, $token);
+	//$client = new Services_Twilio($sid, $token);
 $m = new Mongo('166.78.181.194');
 $db = $m->test;
 $collection = $db->test;
@@ -15,11 +15,11 @@ print_r($collection);
 //$connection = new MongoClient();
 //	phpinfo();
 
-	$message = $client->account->sms_messages->create(
-		'9172439244', // From a valid Twilio number
-		'6465097500', // Text this number
-		"Hello monkey!"
-	);
+	// $message = $client->account->sms_messages->create(
+	// 	'9172439244', // From a valid Twilio number
+	// 	'6465097500', // Text this number
+	// 	"Hello monkey!"
+	// );
 
 
 
