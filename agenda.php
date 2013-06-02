@@ -37,6 +37,7 @@ $db = $m->selectDB('agendas');
 
 $collection = new MongoCollection($db, 'agendas');
 
+$zip  = $_GET['zip'];
 
 
 // $zip = $_POST['zip'];
@@ -82,13 +83,19 @@ $collection = new MongoCollection($db, 'agendas');
 
 <?php  
 
-$query = array('agenda_id' => '2013-06-04');
-
+if(empty($zip)){
+	$query = array('agenda_id' => '2013-06-04');
+}
+else { 
+	$query = array('agenda_id' => '2013-06-04', 'zipcode' => $zip);
+}
 $agendas = $collection->find($query);
 
 foreach ($agendas as $agenda) {
 
 	echo '<dd class=\"item\"> <p> <a href=\"#\">'.$agenda['id'].'</a> - '.$agenda['content'].'</p><small>'.$agenda['category'].'</small> </dd>';
+
+
 }
 
 ?>
