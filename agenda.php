@@ -130,6 +130,7 @@ foreach ($agendas as $agenda) {
 
 <?php  
 
+$collection = new MongoCollection($db, 'agendas');
 
 $query = array('agenda_id' => '2013-06-04');
 
