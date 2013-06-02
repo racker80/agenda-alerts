@@ -42,7 +42,8 @@ $password = 'pass';
 		$query = array();
 
 		$cursor = $collection->find($query);
-		var_dump($m);
+		
+		print_r($m);
 		?>
 </pre>
 	
@@ -52,7 +53,8 @@ Insert Testing
 <?php		
 
 foreach ($cursor as $doc) {
-    var_dump($doc);
+	echo "***";
+    print_r($doc);
 }
 ?>
 
@@ -64,10 +66,10 @@ foreach ($cursor as $doc) {
 //$agendas = $m->agendas;
 $user = array(
 	'id' => "testid_".microtime() , 
-	'types' => array('Water', 'Zoning', 'Parks'),
+	'types' => array('Test', 'Power'),
 	'zip' => '78745',
 	'phone' => '5126267616',
-	'email' => 'aaronmontana+hackathon@gmail.com'
+	'email' => 'aaronmontana+hackathon2@gmail.com'
 	);
 
 $collection->insert($user);

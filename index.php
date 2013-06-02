@@ -79,27 +79,27 @@
 			<div class="well">
 				<div id="hero_form" class="row-fluid">
 					<div class="span6 form_content">
-						<form class="form-inline">
+						<form class="form-inline" action="libs/addUser.php" method="post">
 							<fieldset>
 								<h2>Get Alerts!</h2>
 								<p>We will text you when City Council is talking about your neighborhood.</p>
 								<div class="control-group">
 									<label class="control-label" for="input01">Phone</label>
 									<div class="controls">
-										<input type="text" class="input-xlarge" id="input01">
+										<input type="text" class="input-xlarge" id="input01" name="phone">
 									</div>
 
 								</div>	
 								<div class="control-group">
 									<label class="control-label" for="input01">Zip</label>
 									<div class="controls">
-										<input type="text" class="input-xlarge" id="input01">
+										<input type="text" class="input-xlarge" id="input01" name="zip">
 									</div>
 								</div>									
 								<div class="control-group">
 									<label class="control-label" for="input01">Email</label>
 									<div class="controls">
-										<input type="text" class="input-xlarge" id="input01">
+										<input type="text" class="input-xlarge" id="input01" name="email">
 									</div>
 								</div>
 								<div class="form-actions">
