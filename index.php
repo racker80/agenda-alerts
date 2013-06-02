@@ -272,8 +272,8 @@
 
  
         <!-- JavaScript libraries -->
-        <script src="application/js/vendor/jquery.min.js"></script>
-        <script src="application/js/vendor/bootstrap.js"></script>
+        <script src="application/js/vendor/jquery-1.9.1.min.js"></script>
+        <script src="application/js/vendor/bootstrap.min.js"></script>
         <!-- Javascripts -->
         <script src="application/js/plugins.js"></script>
         <script src="application/js/main.js"></script>
