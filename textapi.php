@@ -32,13 +32,13 @@ $collection = new MongoCollection($db, 'people');
 		$cursor = $collection->findOne($query);
 
 		if($cursor){
-		$m = "Looks like you are already signed up for Agenda Alerts. :)";
+		$m = "Looks like you are already signed up for Agenda Alerts. View your Agenda: http://50.56.172.7/agenda.php?zip={$body}";
 		send_message($m, $from);
 
 
 		} else {
 			$collection->insert($user);
-			$m = "Thanks for Signing up with Agenda Alerts.  Text 'stop' to unsubscribe.";
+			$m = "Thanks for Signing up with Agenda Alerts.  Text 'stop' to unsubscribe.  View your Agenda: http://50.56.172.7/agenda.php?zip={$body}";
 			send_message($m, $from);
 
 

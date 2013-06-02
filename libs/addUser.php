@@ -40,7 +40,7 @@ $cursor = $collection->findOne($query);
 if($cursor){
 
 
-		$m = "Looks like you are already signed up for Agenda Alerts. :)";
+		$m = "Looks like you are already signed up for Agenda Alerts. View your Agenda: http://50.56.172.7/agenda.php?zip={$zip}";
 		$message = $client->account->sms_messages->create(
 				'7204632007', // From a valid Twilio number
 				$phone, // Text this number
@@ -50,7 +50,7 @@ if($cursor){
 } else{  
 
 	$collection->insert($user);
-	$m = "Thanks for Signing up with Agenda Alerts.  Text 'stop' to unsubscribe.";
+	$m = "Thanks for Signing up with Agenda Alerts.  Text 'stop' to unsubscribe. View your Agenda: http://50.56.172.7/agenda.php?zip={$zip}";
 	$message = $client->account->sms_messages->create(
 			'7204632007', // From a valid Twilio number
 			$phone, // Text this number
