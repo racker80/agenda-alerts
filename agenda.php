@@ -98,25 +98,46 @@ $zip = $user['zip'];
 
 	<div class="container">
 
+<?php
+
+$collection = new MongoCollection($db, 'agendas');
+
+if(!empty($zip)) {
+
+
+
+	$query = array('agenda_id' => '2013-06-04', 'zipcode' => $zip);
+
+	$agendas = $collection->find($query);
+
+?>
 <dl class="agenda-list custom-agenda">
-	<dt class="category austin-energy">Newest Items Pulled from Database</dt>
+	<dt class="category austin-energy">Newest items for your zipcode: <?php echo $zip; ?></dt>
+<?php
+foreach ($agendas as $agenda) {
+
+	echo '<dd class=\"item\"> <p> <a href=\"#\">'.$agenda['id'].'</a> - '.$agenda['content'].'</p><small>'.$agenda['category'].' / '.$agenda['zipcode'].'</small>  </dd>';
+
+}
+?>
+</dl>
+<?php } ?>
+
+<dl class="agenda-list custom-agenda">
+	<dt class="category austin-energy">The Newest City Hall Agenda</dt>
+
+
 
 <?php  
 
 
-$collection = new MongoCollection($db, 'agendas');
+$query = array('agenda_id' => '2013-06-04');
 
-if(empty($zip)){
-	$query = array('agenda_id' => '2013-06-04');
-}
-else { 
-	$query = array('agenda_id' => '2013-06-04', 'zipcode' => $zip);
-}
 $agendas = $collection->find($query);
 
 foreach ($agendas as $agenda) {
 
-	echo '<dd class=\"item\"> <p> <a href=\"#\">'.$agenda['id'].'</a> - '.$agenda['content'].'</p><small>'.$agenda['category'].'</small> / '.$agenda['zipcode'].'  </dd>';
+	echo '<dd class=\"item\"> <p> <a href=\"#\">'.$agenda['id'].'</a> - '.$agenda['content'].'</p><small>'.$agenda['category'].' </small>  </dd>';
 
 
 }
