@@ -38,15 +38,16 @@ $db = $m->selectDB('agendas');
 $collection = new MongoCollection($db, 'agendas');
 
 
-$zip = $_POST['zip'];
-$phone = $_POST['phone'];
-$email = $_POST['email'];
 
-$user = array(
-	'phone' => $phone,
-	'zip' => $zip,
-	'email' => $email
-	);
+// $zip = $_POST['zip'];
+// $phone = $_POST['phone'];
+// $email = $_POST['email'];
+
+// $user = array(
+// 	'phone' => $phone,
+// 	'zip' => $zip,
+// 	'email' => $email
+// 	);
 
 ?>
 
@@ -76,97 +77,26 @@ $user = array(
 
 	<div class="container">
 
+<dl class="agenda-list custom-agenda">
+	<dt class="category austin-energy">Newest Items Pulled from Database</dt>
 
-		<dl class="agenda-list custom-agenda">
-			<dt class="category austin-energy">Agenda items for your zip code - 78702</dt>
-			<dd class="item">
-				<h5>Austin Energy</h5>
-				<p>
-					<a href="#">Item 12345</a> – Authorize negotiation and execution of an agreement with Seton Healthcare, to provide a performance-based incentive for the generation of solar energy at its facility located at 4900 Mueller Blvd., Austin, Texas 78723, over a 10-year period for an estimated $7,325 per year, for a total amount not to exceed $73,250.
-				</p>
-			</dd>
-			<dd class="item">
-				<h5>Construction Contracts</h5>
-				<p>
-					<a href="#">Item 12345</a> – Authorize negotiation and execution of an agreement with St. David’s Episcopal Church, to provide a performance-based incentive for the generation of solar energy at its facility located at 308 E. 8th St., Austin, Texas 78701, over a 10-year period for an estimated $26,969 per year, for a total amount not to exceed $269,690.
-				</p>
-			</dd>
-		</dl>
-	
+<?php  
 
-		<dl class="agenda-list">
-			<dt class="category austin-energy">Austin Energy</dt>
-			<dd class="item">
-				<p>
-					<a href="#">Item 12345</a> – Authorize negotiation and execution of an agreement with Seton Healthcare, to provide a performance-based incentive for the generation of solar energy at its facility located at 4900 Mueller Blvd., Austin, Texas 78723, over a 10-year period for an estimated $7,325 per year, for a total amount not to exceed $73,250.
-				</p>
-			</dd>
-			<dd class="item">
-				<p>
-					<a href="#">Item 12345</a> – Authorize negotiation and execution of an agreement with St. David’s Episcopal Church, to provide a performance-based incentive for the generation of solar energy at its facility located at 308 E. 8th St., Austin, Texas 78701, over a 10-year period for an estimated $26,969 per year, for a total amount not to exceed $269,690.
-				</p>
-			</dd>
-			<dd class="item">
-				<p>
-					<a href="#">Item 12345</a> – Approve issuance of a rebate to Arts Apartments South Austin, LLC, for performing comprehensive energy efficiency upgrades at the Arts Apartments at South Austin located at 400 West St. Elmo Rd., Austin, Texas 78745, in an amount not to exceed $99,000.
-				</p>
-			</dd>
-			<dd class="item">
-				<p>
-					<a href="#">Item 12345</a> – Approve issuance of a rebate to Arts Apartments at Turtle Creek, LLC, for performing comprehensive energy efficiency upgrades at the Arts Apartments at the Turtle Creek located at 714 Turtle Creek Blvd., Austin, Texas 78745, in an amount not to exceed $71,500.
-				</p>
-			</dd>	
+$query = array('agenda_id' => '2013-06-04');
 
-			<dt class="category austin-energy">Austin Water Utility</dt>
-			<dd class="item">
-				<p>
-					<a href="#">Item 12345</a> – Authorize negotiation and execution of an agreement with Seton Healthcare, to provide a performance-based incentive for the generation of solar energy at its facility located at 4900 Mueller Blvd., Austin, Texas 78723, over a 10-year period for an estimated $7,325 per year, for a total amount not to exceed $73,250.
-				</p>
-			</dd>
-			<dd class="item">
-				<p>
-					<a href="#">Item 12345</a> – Authorize negotiation and execution of an agreement with St. David’s Episcopal Church, to provide a performance-based incentive for the generation of solar energy at its facility located at 308 E. 8th St., Austin, Texas 78701, over a 10-year period for an estimated $26,969 per year, for a total amount not to exceed $269,690.
-				</p>
-			</dd>
-			<dd class="item">
-				<p>
-					<a href="#">Item 12345</a> – Approve issuance of a rebate to Arts Apartments at Turtle Creek, LLC, for performing comprehensive energy efficiency upgrades at the Arts Apartments at the Turtle Creek located at 714 Turtle Creek Blvd., Austin, Texas 78745, in an amount not to exceed $71,500.
-				</p>
-			</dd>	
+$agendas = $collection->find($query);
 
-			<dt class="category austin-energy">Aviation</dt>
-			<dd class="item">
-				<p>
-					<a href="#">Item 12345</a> – Authorize negotiation and execution of an amendment to the lease and hangar facility development agreement with Ascend AUS, LLC to require the Department of Aviation to relocate a Federal Aviation Administration signal cable, refund tenant a total amount of $173,804.00, and modify other lease terms consistent with the mediated settlement agreement dated July 17, 2012.
-				</p>
-			</dd>
+foreach ($agendas as $agenda) {
 
-			<dt class="category austin-energy">Contract Management</dt>
-			<dd class="item">
-				<p>
-					<a href="#">Item 12345</a> – Authorize negotiation and execution of an agreement with Seton Healthcare, to provide a performance-based incentive for the generation of solar energy at its facility located at 4900 Mueller Blvd., Austin, Texas 78723, over a 10-year period for an estimated $7,325 per year, for a total amount not to exceed $73,250.
-				</p>
-			</dd>
-			<dd class="item">
-				<p>
-					<a href="#">Item 12345</a> – Authorize negotiation and execution of an agreement with St. David’s Episcopal Church, to provide a performance-based incentive for the generation of solar energy at its facility located at 308 E. 8th St., Austin, Texas 78701, over a 10-year period for an estimated $26,969 per year, for a total amount not to exceed $269,690.
-				</p>
-			</dd>
+	echo '<dd class=\"item\"> <p> <a href=\"#\">'.$agenda['id'].'</a> - '.$agenda['content'].'</p><small>'.$agenda['category'].'</small> </dd>';
+}
+
+?>
+
+</dl>
 
 
-			<dt class="category austin-energy">Emergency Medical Services</dt>
-			<dd class="item">
-				<p>
-					<a href="#">Item 12345</a> – Authorize negotiation and execution of an agreement with Seton Healthcare, to provide a performance-based incentive for the generation of solar energy at its facility located at 4900 Mueller Blvd., Austin, Texas 78723, over a 10-year period for an estimated $7,325 per year, for a total amount not to exceed $73,250.
-				</p>
-			</dd>
-			<dd class="item">
-				<p>
-					<a href="#">Item 12345</a> – Authorize negotiation and execution of an agreement with St. David’s Episcopal Church, to provide a performance-based incentive for the generation of solar energy at its facility located at 308 E. 8th St., Austin, Texas 78701, over a 10-year period for an estimated $26,969 per year, for a total amount not to exceed $269,690.
-				</p>
-			</dd>
 
-		</dl>
 
 	</div>
 
