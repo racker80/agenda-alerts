@@ -1,6 +1,18 @@
 <?php
 	require_once 'libs/Twilio.php';
 
+$url = '166.78.181.9:27017/agendas';
+$dbusername = 'poster';
+$dbpassword = 'pass';
+
+
+$m = new Mongo("mongodb://".$dbusername.":".$dbpassword."@".$url);
+
+$db = $m->selectDB('agendas');
+
+$collection = new MongoCollection($db, 'people');
+
+
 
 	//GET THE TEXT MESSAGE
 	$body = $_REQUEST['Body'];
@@ -10,15 +22,37 @@
 	//FIGURE OUT IF TEXT IS A ZIP CODE
 	if(is_numeric($body) && strlen($body) == 5) {
 
-		//if user exists then update their zip code of interest
-		if(user_exists($from)) {
-			//UPDATE USER ZIPCODE
-			update_user_helper($from, $body);
+		$user = array(
+			'phone' => $from,
+			'zip' => $body,
+			);
+
+		$query = array("phone" => $from);
+
+		$cursor = $collection->findOne($query);
+
+		if($cursor){
+		$m = "Looks like you are already signed up for Agenda Alerts. :)";
+		send_message($m, $from);
+
 
 		} else {
-			//ADD A USER
-			add_user_helper($from, $body);
+			$collection->insert($user);
+			$m = "Thanks for Signing up with Agenda Alerts.  Text 'stop' to unsubscribe.";
+			send_message($m, $from);
+
+
 		}
+
+		//if user exists then update their zip code of interest
+		// if(user_exists($from)) {
+		// 	//UPDATE USER ZIPCODE
+		// 	update_user_helper($from, $body);
+
+		// } else {
+		// 	//ADD A USER
+		// 	add_user_helper($from, $body);
+		// }
 
 	} else {
 
