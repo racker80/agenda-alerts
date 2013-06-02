@@ -22,7 +22,20 @@ $user = array(
 	'email' => $email
 	);
 
+$query = array("phone" => $phone);
+
+
+$cursor = $collection->findOne($query);
+
+if($cursor){
+
+echo "Looks like you are already signed up. :)";
+
+} else{  
 $collection->insert($user);
+} 
+
+
 
 
 
