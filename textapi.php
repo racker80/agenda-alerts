@@ -18,6 +18,9 @@ $collection = new MongoCollection($db, 'people');
 	$body = $_REQUEST['Body'];
 	$from = $_REQUEST['From'];
 
+	if($from[0] == '+') {
+		$from = substr($from, 1);
+	}
 
 	//FIGURE OUT IF TEXT IS A ZIP CODE
 	if(is_numeric($body) && strlen($body) == 5) {
