@@ -37,11 +37,11 @@ $password = 'pass';
 
 		$db = $m->selectDB('agendas');
 
-		$collection = new MongoCollection($db, 'people');
+		$collection = new MongoCollection($db, 'agendas');
 
 		$query = array();
 
-		$cursor = $collection->find($query);
+		$cursor = $collection->find();
 		
 		print_r($m);
 		?>
@@ -66,10 +66,10 @@ foreach ($cursor as $doc) {
 //$agendas = $m->agendas;
 $user = array(
 	'id' => "testid_".microtime() , 
-	'types' => array('Test', 'Power'),
+	'types' => array('Water', 'Zoning', 'Parks'),
 	'zip' => '78745',
 	'phone' => '5126267616',
-	'email' => 'aaronmontana+hackathon2@gmail.com'
+	'email' => 'aaronmontana+hackathon@gmail.com'
 	);
 
 $collection->insert($user);
