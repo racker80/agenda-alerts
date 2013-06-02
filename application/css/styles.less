@@ -1,1 +1,133 @@
 @import 'bootstrap/less/bootstrap.less';
+@import 'bootstrap/less/responsive.less';
+
+
+.agenda-list {
+	dt {
+		font-size:1.8em;
+		line-height:1.4em;
+		padding-bottom:1em;
+		margin-bottom:1em;
+		border-bottom:1px solid #d2d2d2;
+		margin-top:20px;
+		&:first-child {
+			margin-top:0;
+		}
+	}
+	dd {
+		display: list-item;
+		list-style-type: disc;
+		font-size:1.2em;
+		line-height:1.6em;
+		padding:15px;
+		&:hover {
+			background:#f1f1f1;
+		}
+	}
+}
+
+
+
+
+
+#footer {
+    margin:0px 0 0px;
+    padding:40px 0;
+    background:#1A1A1A;
+    
+    #rackerpowered {
+        height:30px;
+        margin:40px 0 0;
+        background:url('../img/rackerpowered.png') center no-repeat;
+        
+    }
+    
+}
+
+
+#rackFooter {
+   padding:0;
+    font-family:arial, verdana, sans-serif!important;
+    
+    #rack_disclaimer {
+        background:#fff;
+        padding:20px 20px 10px 20px;
+        margin-bottom:40px;
+        p {
+            font-size:14px!important;
+            line-height:1.4em;
+        }
+        .read_more {
+            color:#C40022;
+            font-weight:bold;
+        }
+    }
+    .more {
+        display:none;
+    }
+    
+    .colheader {
+        margin-bottom:15px;
+        color:#fff;
+        a {
+            text-transform:uppercase;
+            color:#dddddd;
+            font-size:13px;
+            line-height:16px;
+            text-decoration:none;
+            font-weight:bold;
+        }
+    }
+    
+    
+    ul {
+        padding:0;
+        margin:0;
+        list-style:none;
+        li {
+            margin:0 0 7px;
+            font-size:12px;
+            a {
+                color:#4f81a6;
+                text-decoration:none;
+                font-size:12px;
+                &:hover {
+                    color:#fff;
+                    text-decoration:none;
+                }
+            }
+        }
+    }
+    
+    .contact_col {
+        ul {
+            margin-bottom:25px;
+            li {
+                padding-left:20px;
+                height:16px;
+                line-height:16px;
+                font-size:14px;
+                color:#777777;
+                &.sales {
+                    background:url('../img/rackspace-sales-icon.png') left center no-repeat;
+                }
+                &.support {
+                    background:url('../img/rackspace-support-icon.png') left center no-repeat;
+
+                }
+            }
+        }
+    }
+
+    .row-fluid {
+        .col {
+            color:#999;
+            padding:0 10px;
+            &:last-child {
+            }
+
+        }
+    }
+}
+
+
