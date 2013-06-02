@@ -31,13 +31,33 @@ $dbusername = 'poster';
 $dbpassword = 'pass';
 
 
+$zip  = $_GET['zip'];
+
+$phone = $_GET['phone'];
+
+
 $m = new Mongo("mongodb://".$dbusername.":".$dbpassword."@".$url);
 
 $db = $m->selectDB('agendas');
 
-$collection = new MongoCollection($db, 'agendas');
+if(!empty($phone)){
 
-$zip  = $_GET['zip'];
+$collection = new MongoCollection($db, 'people');
+
+$query = array('phone' => $phone);
+
+$user = $collection->findOne($query);
+
+$zip = $user['zip'];
+
+}
+
+
+
+
+
+
+
 
 
 // $zip = $_POST['zip'];
@@ -83,6 +103,9 @@ $zip  = $_GET['zip'];
 
 <?php  
 
+
+$collection = new MongoCollection($db, 'agendas');
+
 if(empty($zip)){
 	$query = array('agenda_id' => '2013-06-04');
 }
@@ -93,7 +116,7 @@ $agendas = $collection->find($query);
 
 foreach ($agendas as $agenda) {
 
-	echo '<dd class=\"item\"> <p> <a href=\"#\">'.$agenda['id'].'</a> - '.$agenda['content'].'</p><small>'.$agenda['category'].'</small> </dd>';
+	echo '<dd class=\"item\"> <p> <a href=\"#\">'.$agenda['id'].'</a> - '.$agenda['content'].'</p><small>'.$agenda['category'].'</small> / '.$agenda['zipcode'].'  </dd>';
 
 
 }
