@@ -65,6 +65,7 @@
 		//send message
 		$m = "Agenda Alerts has updated your zip code to {$zip}.";
 		send_message($m, $from);
+
 	}
 
 
@@ -76,7 +77,7 @@
 
 		$client = new Services_Twilio($sid, $token);
 
-
+		print_r($m);
 		$message = $client->account->sms_messages->create(
 				'9172439244', // From a valid Twilio number
 				$phone, // Text this number
