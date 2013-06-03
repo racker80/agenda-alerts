@@ -1,4 +1,8 @@
 <?php
+// open syslog, include the process ID and also send
+// the log to standard error, and use a user defined
+// logging mechanism
+openlog('atxhackathon-php.io-info.log', LOG_PID | LOG_PERROR, LOG_LOCAL0);
 
 // 	//require_once 'libs/Mongo_db.php';
 // 	require_once 'libs/Twilio.php';
@@ -188,6 +192,8 @@ foreach ($hosts as $host) {
 
 		$collection = new MongoCollection($db, 'agendas');
 
+		syslog(LOG_INFO, 'Established connection to Mongo DB: '.$url);
+
 		$query = array('agenda_id' => '2013-06-04');
 
 		$agendas = $collection->find($query);
@@ -199,7 +205,7 @@ foreach ($hosts as $host) {
 		}
 		break;
 	} catch (Exception $e) {
-		error_log('Error establishing connecto to Mongo DB: '.$e->getMessage());
+		error_log('Error establishing connection to Mongo DB: '.$e->getMessage());
 	}
 }
 
