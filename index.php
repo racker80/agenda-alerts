@@ -170,26 +170,37 @@
 
 <?php  
 
-$url = '166.78.181.9:27017/agendas';
-$dbusername = 'poster';
-$dbpassword = 'pass';
+$hosts = array(
+    "data02.atxhackathon-mongo.io" => "166.78.181.9",
+    "primary.atxhackathon-mongo.io" => "166.78.181.194",
+    "ata01.atxhackathon-mongo.io" => "166.78.181.230",
+)
 
-$m = new Mongo("mongodb://".$dbusername.":".$dbpassword."@".$url);
+foreach ($hosts as $host) {
+	try {
+		$url = $host.":27017/agendas";
+		$dbusername = 'poster';
+		$dbpassword = 'pass';
 
-$db = $m->selectDB('agendas');
+		$m = new Mongo("mongodb://".$dbusername.":".$dbpassword."@".$url);
 
-$collection = new MongoCollection($db, 'agendas');
+		$db = $m->selectDB('agendas');
 
+		$collection = new MongoCollection($db, 'agendas');
 
-$query = array('agenda_id' => '2013-06-04');
+		$query = array('agenda_id' => '2013-06-04');
 
-$agendas = $collection->find($query);
+		$agendas = $collection->find($query);
 
-foreach ($agendas as $agenda) {
+		foreach ($agendas as $agenda) {
 
-	echo '<dd class=\"item\"> <p> <a href=\"#\">'.$agenda['id'].'</a> - '.$agenda['content'].'</p><small>'.$agenda['category'].' </small>  </dd>';
+			echo '<dd class=\"item\"> <p> <a href=\"#\">'.$agenda['id'].'</a> - '.$agenda['content'].'</p><small>'.$agenda['category'].' </small>  </dd>';
 
-
+		}
+		break;
+	} catch (Exception $e) {
+		error_log 'Error establishing connecto to Mongo DB: '.$e->getMessage();
+	}
 }
 
 ?>
