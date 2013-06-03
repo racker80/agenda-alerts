@@ -199,7 +199,7 @@ foreach ($hosts as $host) {
 		}
 		break;
 	} catch (Exception $e) {
-		error_log 'Error establishing connecto to Mongo DB: '.$e->getMessage();
+		error_log('Error establishing connecto to Mongo DB: '.$e->getMessage());
 	}
 }
 
