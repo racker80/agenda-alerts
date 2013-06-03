@@ -174,7 +174,7 @@ $hosts = array(
     "data02.atxhackathon-mongo.io" => "166.78.181.9",
     "primary.atxhackathon-mongo.io" => "166.78.181.194",
     "ata01.atxhackathon-mongo.io" => "166.78.181.230",
-)
+);
 
 foreach ($hosts as $host) {
 	try {
